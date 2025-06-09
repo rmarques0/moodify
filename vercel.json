@@ -4,10 +4,7 @@
     {
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
-      "config": {
-        "distDir": "build",
-        "framework": "react"
-      }
+      "config": { "distDir": "build" }
     },
     {
       "src": "backend/src/server.ts",
@@ -15,17 +12,8 @@
     }
   ],
   "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "backend/src/server.ts"
-    },
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
+    { "src": "/api/(.*)", "dest": "backend/src/server.ts" },
+    { "src": "/(.*)", "dest": "frontend/build/index.html" }
   ],
   "env": {
     "NODE_ENV": "production"
