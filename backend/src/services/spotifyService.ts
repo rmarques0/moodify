@@ -13,10 +13,13 @@ export class SpotifyService {
   private clientSecret: string;
   private accessToken: string | null = null;
   private tokenExpiry: number = 0;
+  private useMockFallback: boolean;
 
   constructor() {
     this.clientId = process.env.SPOTIFY_CLIENT_ID || '';
     this.clientSecret = process.env.SPOTIFY_CLIENT_SECRET || '';
+    // Set to false to disable mock playlists completely
+    this.useMockFallback = process.env.USE_MOCK_FALLBACK !== 'false';
   }
 
   private async getAccessToken(): Promise<string> {
@@ -92,9 +95,15 @@ export class SpotifyService {
 
       return uniquePlaylists.slice(0, 8);
     } catch (error) {
-      console.error('Spotify API failed, using mock playlists:', error);
-      // Force redeploy - null safety fix applied
-      return this.getMockPlaylists(searchTerms);
+      console.error('Spotify API failed:', error);
+      
+      if (this.useMockFallback) {
+        console.log('Using mock playlists as fallback');
+        return this.getMockPlaylists(searchTerms);
+      } else {
+        console.log('Mock fallback disabled, returning empty array');
+        return [];
+      }
     }
   }
 
