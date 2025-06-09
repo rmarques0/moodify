@@ -62,17 +62,22 @@ export class SpotifyService {
           });
 
           if (response.data.playlists?.items) {
-            results.push(...response.data.playlists.items);
+            // Filter out null/invalid playlists before adding
+            const validPlaylists = response.data.playlists.items.filter(
+              (playlist: any) => playlist && playlist.id && playlist.name
+            );
+            results.push(...validPlaylists);
           }
         } catch (searchError) {
           console.log(`Search failed for term: ${term}`);
         }
       }
 
-      // Remove duplicates and return top results
+      // Remove duplicates and return top results - with null safety
       const uniquePlaylists = results.filter(
         (playlist, index, self) =>
-          index === self.findIndex((p) => p.id === playlist.id)
+          playlist && playlist.id && 
+          index === self.findIndex((p) => p && p.id === playlist.id)
       );
 
       return uniquePlaylists.slice(0, 8);
