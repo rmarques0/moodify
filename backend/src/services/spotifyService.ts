@@ -83,6 +83,7 @@ export class SpotifyService {
       return uniquePlaylists.slice(0, 8);
     } catch (error) {
       console.error('Spotify API failed, using mock playlists:', error);
+      // Force redeploy - null safety fix applied
       return this.getMockPlaylists(searchTerms);
     }
   }
