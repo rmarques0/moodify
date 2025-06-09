@@ -78,11 +78,17 @@ export class SpotifyService {
         playlist && playlist.id && playlist.name
       );
 
-      // Remove duplicates from valid results
-      const uniquePlaylists = validResults.filter(
-        (playlist, index, self) =>
-          index === self.findIndex((p) => p.id === playlist.id)
-      );
+      // Remove duplicates from valid results with extra safety
+      let uniquePlaylists;
+      try {
+        uniquePlaylists = validResults.filter(
+          (playlist, index, self) =>
+            index === self.findIndex((p) => p && p.id === playlist.id)
+        );
+      } catch (dedupError) {
+        console.warn('Deduplication failed, returning filtered results:', dedupError);
+        uniquePlaylists = validResults;
+      }
 
       return uniquePlaylists.slice(0, 8);
     } catch (error) {
