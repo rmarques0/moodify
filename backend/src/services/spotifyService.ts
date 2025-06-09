@@ -73,11 +73,15 @@ export class SpotifyService {
         }
       }
 
-      // Remove duplicates and return top results - with null safety
-      const uniquePlaylists = results.filter(
+      // Filter out any null/undefined results first
+      const validResults = results.filter(playlist => 
+        playlist && playlist.id && playlist.name
+      );
+
+      // Remove duplicates from valid results
+      const uniquePlaylists = validResults.filter(
         (playlist, index, self) =>
-          playlist && playlist.id && 
-          index === self.findIndex((p) => p && p.id === playlist.id)
+          index === self.findIndex((p) => p.id === playlist.id)
       );
 
       return uniquePlaylists.slice(0, 8);
