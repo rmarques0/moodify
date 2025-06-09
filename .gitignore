@@ -56,4 +56,8 @@ temp/
 # package-lock.json
 
 # Vercel
-.vercel 
+.vercel
+
+# Force include important HTML files (override global gitignore)
+!frontend/public/index.html
+!**/public/index.html 
