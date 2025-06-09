@@ -17,7 +17,7 @@ const SectionTitle = styled.h3`
   text-align: center;
 `;
 
-const MoodAnalysis = styled.div`
+const MoodAnalysisCard = styled.div`
   background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
   border-radius: 15px;
   padding: 20px;
@@ -170,7 +170,7 @@ const PlaylistDisplay: React.FC<PlaylistDisplayProps> = ({
     <PlaylistContainer>
       <SectionTitle>Listas de Reproducción Perfectas para tu Estado de Ánimo</SectionTitle>
       
-      <MoodAnalysis>
+      <MoodAnalysisCard>
         <MoodText>"{originalText}"</MoodText>
         <MoodDetails>
           <MoodTag>😊 {moodAnalysis.emotion}</MoodTag>
@@ -184,7 +184,7 @@ const PlaylistDisplay: React.FC<PlaylistDisplayProps> = ({
             <MoodTag>🎯 {Math.round(moodAnalysis.confidence * 100)}% confident</MoodTag>
           )}
         </MoodDetails>
-      </MoodAnalysis>
+      </MoodAnalysisCard>
 
       {playlists.length > 0 ? (
         <PlaylistGrid>
