@@ -1,0 +1,54 @@
+{
+  "name": "moodify-backend",
+  "version": "1.0.0",
+  "description": "Backend server for Moodify - Music recommendation app based on mood",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "start": "node dist/server.js",
+    "test": "jest",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix"
+  },
+  "keywords": [
+    "spotify",
+    "music",
+    "mood",
+    "emotions",
+    "api",
+    "nodejs"
+  ],
+  "author": "Moodify Team",
+  "license": "MIT",
+  "dependencies": {
+    "@types/helmet": "^0.0.48",
+    "axios": "^1.9.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^4.21.2",
+    "express-session": "^1.17.3",
+    "helmet": "^7.2.0",
+    "morgan": "^1.10.0",
+    "openai": "^5.1.1",
+    "qs": "^6.11.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.18",
+    "@types/express": "^4.17.22",
+    "@types/express-session": "^1.17.10",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^20.19.0",
+    "@types/qs": "^6.9.10",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0",
+    "eslint": "^8.53.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
