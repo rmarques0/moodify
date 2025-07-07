@@ -155,20 +155,20 @@ interface ChatBoxProps {
 }
 
 const predefinedMoods = [
-  { emoji: '😊', text: 'Feliz' },
-  { emoji: '😢', text: 'Triste' },
   { emoji: '😴', text: 'Cansado' },
-  { emoji: '😌', text: 'Relajado' },
-  { emoji: '😍', text: 'Enamorado' },
-  { emoji: '😤', text: 'Estresado' },
   { emoji: '🎉', text: 'Celebrando' },
+  { emoji: '😎', text: 'Confiado' },
+  { emoji: '😇', text: 'En paz' },
+  { emoji: '😍', text: 'Enamorado' },
+  { emoji: '🔥', text: 'Energético' },
+  { emoji: '😠', text: 'Enojado' },
+  { emoji: '😤', text: 'Estresado' },
+  { emoji: '😊', text: 'Feliz' },
   { emoji: '😔', text: 'Melancólico' },
   { emoji: '💪', text: 'Motivado' },
   { emoji: '🤔', text: 'Pensativo' },
-  { emoji: '😇', text: 'En paz' },
-  { emoji: '🔥', text: 'Energético' },
-  { emoji: '😠', text: 'Enojado' },
-  { emoji: '😎', text: 'Confiado' }
+  { emoji: '😌', text: 'Relajado' },
+  { emoji: '😢', text: 'Triste' }
 ];
 
 const ChatBox: React.FC<ChatBoxProps> = ({ onSubmit, isLoading }) => {
